@@ -28,6 +28,8 @@ public class board extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        jFrame2 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -84,7 +86,7 @@ public class board extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/ui/assets/QH.jpg"))); // NOI18N
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(320, 270, 190, 280);
+        jLabel7.setBounds(320, 260, 190, 280);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/ui/assets/QS.jpg"))); // NOI18N
         jPanel1.add(jLabel6);
@@ -92,7 +94,7 @@ public class board extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/ui/assets/KD.jpg"))); // NOI18N
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(220, 280, 180, 260);
+        jLabel5.setBounds(220, 270, 180, 260);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/ui/assets/2D.jpg"))); // NOI18N
         jPanel1.add(jLabel4);
@@ -110,6 +112,11 @@ public class board extends javax.swing.JFrame {
         jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jLabel1MouseDragged(evt);
+            }
+        });
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
             }
         });
         jPanel1.add(jLabel1);
@@ -131,6 +138,10 @@ public class board extends javax.swing.JFrame {
     private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseDragged
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -168,6 +179,8 @@ public class board extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
