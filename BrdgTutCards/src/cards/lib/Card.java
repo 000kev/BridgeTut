@@ -42,7 +42,7 @@ public class Card extends javax.swing.JPanel {
      */
     public Card() {
         suit = HEARTS;
-        value = 1;
+        value = 13;
         
         switch (value) {
             case 1:
