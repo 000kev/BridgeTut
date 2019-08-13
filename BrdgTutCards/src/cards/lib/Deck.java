@@ -20,18 +20,27 @@ public class Deck {
 	private List<Card> cards = new LinkedList<Card>();
 	
 	public Deck() {
-		// 
+            int[] array = new int[4];
+            array[0]=0; //SPADES
+            array[1]=1; //HEARTS
+            array[2]=2; //DIAMONDS
+            array[3]=3; //CLUBS
+            for (int suit: array) {
+                for (int value=1; value<=13; value++) {
+                    this.putBottom(new Card(value, suit));
+                }
+            }
 	}
 	
 	public Deck(Deck deck) {
 		this.cards.addAll(deck.cards);
 	}
 	
-	public void putTop(Card card) {
+	private void putTop(Card card) {
 		this.cards.add(0, card);
 	}
 	
-	public void putBottom(Card card) {
+	private void putBottom(Card card) {
 		this.cards.add(card);
 	}
 	

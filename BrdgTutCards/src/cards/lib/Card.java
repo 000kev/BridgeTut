@@ -9,7 +9,7 @@ package cards.lib;
  *
  * @author kevin
  */
-public class Card {
+public class Card extends javax.swing.JPanel {
 
     public final static int SPADES = 0;   // Codes for the 4 suits, plus Joker.
     public final static int HEARTS = 1;
@@ -22,6 +22,8 @@ public class Card {
     public final static int QUEEN = 12;   
     public final static int KING = 13;
 
+    private javax.swing.JLabel jLabel1;
+    private static String reference="";
     /**
      * This card's suit, one of the constants SPADES, HEARTS, DIAMONDS,
      * CLUBS.
@@ -39,10 +41,65 @@ public class Card {
      * "new Card()" is equivalent to "new Card(1,Card.JOKER)".)
      */
     public Card() {
-        suit = JOKER;
+        suit = HEARTS;
         value = 1;
+        
+        switch (value) {
+            case 1:
+                reference="A";
+                break;
+            case 11:
+                reference="J";
+                break;
+            case 12:
+                reference="Q";
+                break;
+            case 13:
+                reference="K";
+                break;
+            default:
+                reference=String.valueOf(value);
+                break;
+        }
+        //reference=String.valueOf(value);
+        switch(suit) {
+            case JOKER:
+                break;
+            case SPADES:
+                reference+="S";
+                break;
+            case DIAMONDS:
+                reference+="D";
+                break;
+            case HEARTS:
+                reference+="H";
+                break;
+            case CLUBS:
+                reference+="C";
+                break;
+        }
+        initComponents();
     }
 
+    @SuppressWarnings("unchecked")
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/ui/assets/"+reference+".jpg"))); // NOI18N
+        jLabel1.setText(reference);
+        
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1)
+        );
+    }
     /**
      * Creates a card with a specified suit and value.
      * @param theValue the value of the new card.  For a regular card (non-joker),
@@ -62,6 +119,43 @@ public class Card {
             throw new IllegalArgumentException("Illegal playing card value");
         value = theValue;
         suit = theSuit;
+        
+        switch (value) {
+            case 1:
+                reference="A";
+                break;
+            case 11:
+                reference="J";
+                break;
+            case 12:
+                reference="Q";
+                break;
+            case 13:
+                reference="K";
+                break;
+            default:
+                reference=String.valueOf(value);
+                break;
+        }
+        //reference=String.valueOf(value);
+        
+        switch(suit) {
+            case JOKER:
+                break;
+            case SPADES:
+                reference+="S";
+                break;
+            case DIAMONDS:
+                reference+="D";
+                break;
+            case HEARTS:
+                reference+="H";
+                break;
+            case CLUBS:
+                reference+="C";
+                break;
+        }
+        initComponents();
     }
 
     /**
