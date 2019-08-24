@@ -23,7 +23,7 @@ public class Card extends javax.swing.JPanel {
     public final static int KING = 13;
 
     private javax.swing.JLabel jLabel1;
-    private static String reference="";
+    private String reference="";
     /**
      * This card's suit, one of the constants SPADES, HEARTS, DIAMONDS,
      * CLUBS.
@@ -41,8 +41,8 @@ public class Card extends javax.swing.JPanel {
      * "new Card()" is equivalent to "new Card(1,Card.JOKER)".)
      */
     public Card() {
-        suit = HEARTS;
-        value = 13;
+        suit = DIAMONDS;
+        value = 10;
         
         switch (value) {
             case 1:
@@ -80,14 +80,14 @@ public class Card extends javax.swing.JPanel {
         }
         initComponents();
     }
-
+    
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/ui/assets/"+reference+".jpg"))); // NOI18N
-        jLabel1.setText(reference);
+        //jLabel1.setText(reference);
         
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
