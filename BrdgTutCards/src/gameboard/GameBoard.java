@@ -5,6 +5,7 @@
  */
 package gameboard;
 import cards.lib.*;
+import java.util.ArrayList;
 import players.lib.*;
 import java.util.Random;
 
@@ -18,7 +19,8 @@ public class GameBoard extends javax.swing.JFrame {
      * Creates new form board
      */
     public GameBoard() {
-        
+        //East east;
+        //West west;
         initComponents();
     }
 
@@ -44,30 +46,25 @@ public class GameBoard extends javax.swing.JFrame {
         panel1.setBackground(new java.awt.Color(47, 144, 27));
         panel1.setLayout(null);
         
-        addCards(card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,card11,card12,card13);
-        //card1.setBounds(1100, 420, 173, 264); card2.setBounds(1060, 420, 173, 264
-        setBounds(card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,card11,card12,card13);
+        addHand(north); north.setBounds();
+        
+        addHand(south); south.setBounds();
+        
+        addHand(east); east.setBounds();
+        
+        addHand(west); west.setBounds();
         
         getContentPane().add(panel1);
         panel1.setBounds(0, 0, 1300, 710);
 
         pack();
     }// </editor-fold>                        
-
-    public void setBounds(Card... cards) {
-        int i = 1100;
-        for (Card card: cards) {
-            card.setBounds(i, 420, 87, 132);
-            i-=40;
+    
+    public void addHand(Player player) {
+        Hand hand = player.getHand();
+        for (int i=0; i<13; i++) {
+            panel1.add(hand.getCard(i));
         }
-    }
-    public void addCards(Card... cards) {
-        for (Card card: cards) {
-            panel1.add(card);
-        }
-    }
-    public void dealHand() {
-        
     }
     /**
      * @param args the command line arguments
@@ -102,32 +99,38 @@ public class GameBoard extends javax.swing.JFrame {
         Deck deck = new Deck();
         deck.shuffle(new Random());
       
-        
-        Player north, south, east, west;
-        Player[] players = new Player[4];
-        north = new Player(); south = new Player(); east = new Player(); west = new Player();
-        players[0] = north; players[1] = south; players[2] = east; players[3] = west;
-        north.assignTeam(south); south.assignTeam(north);
-        east.assignTeam(west); west.assignTeam(east);
+        /* Deal hand to each of the players (N,S,E,W) */
+        north = new North();
+        south = new South();
+        east = new East();
+        west = new West();
         
         while (!deck.isEmpty()) {
-            for (Player player: players) {
-                for (int i=1; i<=13; i++) {
-                    player.addCard(deck.removeTop());
-                }
-            }
+            north.dealHand(deck.removeTop());
+            south.dealHand(deck.removeTop());
+            east.dealHand(deck.removeTop());
+            west.dealHand(deck.removeTop());
         }
-        card1=north.getCard(0); card6=north.getCard(5); card11=north.getCard(10);
-        card2=north.getCard(1); card7=north.getCard(6); card12=north.getCard(11);
-        card3=north.getCard(2); card8=north.getCard(7); card13=north.getCard(12);
-        card4=north.getCard(3); card9=north.getCard(8);
-        card5=north.getCard(4); card10=north.getCard(9);
           
-        System.out.println("North's hand");
+        System.out.println("North's hand\n");
         for (int i=0; i<13; i++) {
             System.out.println(north.getCard(i));
         }
         
+        System.out.println("\nSouth's hand\n");
+        for (int i=0; i<13; i++) {
+            System.out.println(south.getCard(i));
+        }
+        
+        System.out.println("\nEast's hand\n");
+        for (int i=0; i<13; i++) {
+            System.out.println(east.getCard(i));
+        }
+        
+        System.out.println("\nWest's hand\n");
+        for (int i=0; i<13; i++) {
+            System.out.println(west.getCard(i));
+        }
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -140,8 +143,11 @@ public class GameBoard extends javax.swing.JFrame {
 
     }
 
-    // Variables declaration - do not modify                     
-    private static Card card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, card11, card12, card13;
+    // Variables declaration - do not modify 
     private static java.awt.Panel panel1;
+    private static North north;
+    private static South south;
+    private static East east;
+    private static West west;
     // End of variables declaration                   
 }

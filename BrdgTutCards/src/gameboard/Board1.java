@@ -29,6 +29,7 @@ public class Board1 extends javax.swing.JFrame {
     private void initComponents() {
 
         panel1 = new java.awt.Panel();
+        card1 = new cards.lib.Card();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(44, 107, 16));
@@ -39,8 +40,11 @@ public class Board1 extends javax.swing.JFrame {
 
         panel1.setBackground(new java.awt.Color(47, 144, 27));
         panel1.setLayout(null);
+        panel1.add(card1);
+        card1.setBounds(150, 50, 87, 132);
+
         getContentPane().add(panel1);
-        panel1.setBounds(0, -10, 1350, 760);
+        panel1.setBounds(-50, 0, 1350, 760);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -85,6 +89,7 @@ public class Board1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private cards.lib.Card card1;
     private static java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables
 }

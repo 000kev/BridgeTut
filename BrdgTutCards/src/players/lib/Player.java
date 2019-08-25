@@ -5,30 +5,22 @@
  */
 package players.lib;
 import cards.lib.*;
+
 /**
  *
  * @author kevin
  */
-
-public class Player {
+public interface Player {
     
-    private Hand hand;
-    public Player team;
+    public void setBounds();
     
-    public Player() {
-        hand = new Hand();
-        team = null;
-    }
+    public void addCards();
     
-    public void assignTeam(Player player) {
-        team = player;
-    }
+    public void dealHand(Card card);
     
-    public void addCard(Card card) {
-        hand.addCard(card);
-    }
+    public Player assignTeam();
     
-    public Card getCard(int index) {
-        return hand.getCard(index);
-    }
+    public Card getCard(int index);
+    
+    public Hand getHand();
 }
