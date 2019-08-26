@@ -13,8 +13,21 @@ import cards.lib.Card;
  */
 public class NorthTurnState implements State {
     
-    public void Tester(java.awt.event.MouseEvent evt, Card card) {
-        card.setBounds(700, 300, 87, 132);
-        System.out.println("NORTH: "+card+" has moved positions");
+    private boolean turn;
+    
+    public NorthTurnState() {
+        turn = true;
     }
+    
+    public void Tester(java.awt.event.MouseEvent evt, Card card) {
+        if (validAction()) {
+            card.setBounds(700, 300, 87, 132); 
+            System.out.println("NORTH: "+card+" has moved positions");
+        }
+    }
+    
+    public boolean validAction() {
+        return turn;
+    }
+    
 }

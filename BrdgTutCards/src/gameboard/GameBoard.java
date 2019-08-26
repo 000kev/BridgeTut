@@ -19,20 +19,20 @@ public class GameBoard extends javax.swing.JFrame {
     
     // Variables declaration - do not modify 
     private static java.awt.Panel panel1;
-    private static North north;
-    private static South south;
-    private static East east;
-    private static West west;
+    private static North north; private static State north_state;
+    private static South south; private static State south_state;
+    private static East east; private static State east_state;
+    private static West west; private static State west_state;
     // End of variables declaration 
     
     /**
      * Creates new form board
      */
     public GameBoard() {
-        north = new North();
-        south = new South();
-        east = new East();
-        west = new West();
+        north = new North(); north_state = new NorthTurnState();
+        south = new South(); south_state = new SouthTurnState();
+        east = new East(); east_state = new EastTurnState();
+        west = new West(); west_state = new WestTurnState();
         initDeck();
         initComponents();
     }
@@ -50,28 +50,28 @@ public class GameBoard extends javax.swing.JFrame {
                 case "class players.lib.North":
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            new NorthTurnState().Tester(evt, card);
+                            north_state.Tester(evt, card);
                         }
                     });
                     break;
                 case "class players.lib.South":
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            new SouthTurnState().Tester(evt, card);
+                            south_state.Tester(evt, card);
                         }
                     });
                     break;
                 case "class players.lib.East":
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            new EastTurnState().Tester(evt, card);
+                            east_state.Tester(evt, card);
                         }
                     });
                     break;
                 case "class players.lib.West":
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            new WestTurnState().Tester(evt, card);
+                            west_state.Tester(evt, card);
                         }
                     });
             }

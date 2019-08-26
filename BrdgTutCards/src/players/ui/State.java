@@ -5,10 +5,15 @@
  */
 package players.ui;
 
+
 /**
  *
  * @author kevin
  */
 public interface State {
+    
+    public void Tester(java.awt.event.MouseEvent evt, cards.lib.Card card);
+    
+    public boolean validAction();
     
 }

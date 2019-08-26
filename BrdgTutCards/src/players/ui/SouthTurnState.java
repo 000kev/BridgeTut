@@ -13,8 +13,21 @@ import cards.lib.Card;
  */
 public class SouthTurnState implements State {
     
+    private boolean turn = true;
+    
+    public SouthTurnState() {
+        turn = false;
+    }
+    
     public void Tester(java.awt.event.MouseEvent evt, Card card) {
-        card.setBounds(600, 300, 87, 132);
-        System.out.println("SOUTH: "+card+" has moved positions");
+        if(validAction()) {
+            card.setBounds(600, 300, 87, 132);
+            System.out.println("SOUTH: "+card+" has moved positions");
+        }
+        else System.out.println("Invalid action");
+    }
+    
+    public boolean validAction() {
+        return turn;
     }
 }

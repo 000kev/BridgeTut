@@ -12,9 +12,23 @@ import cards.lib.Card;
  * @author kevin
  */
 public class WestTurnState implements State{
+    
+    private boolean turn = true;
+    
+    public WestTurnState() {
+        turn = false;
+    }
+    
     public void Tester(java.awt.event.MouseEvent evt, Card card) {
-        card.setBounds(550, 300, 87, 132);
-        System.out.println("WEST: "+card+" has moved positions");
+        if (validAction()) {
+            card.setBounds(550, 300, 87, 132);
+            System.out.println("WEST: "+card+" has moved positions");
+        }
+        else System.out.println("Invalid action.");
+    }
+    
+    public boolean validAction() {
+        return turn;
     }
     
 }
