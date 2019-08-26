@@ -46,7 +46,7 @@ public class West implements Player {
     public void setBounds() {
         int i = 550;
         for (int j=0; j<13; j++) {
-            hand.getCard(j).setBounds(1050, i, 87, 132);
+            hand.getCard(j).setBounds(150, i, 87, 132);
             i-=40;
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

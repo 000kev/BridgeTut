@@ -40,6 +40,12 @@ public class Board1 extends javax.swing.JFrame {
 
         panel1.setBackground(new java.awt.Color(47, 144, 27));
         panel1.setLayout(null);
+
+        card1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tester(evt);
+            }
+        });
         panel1.add(card1);
         card1.setBounds(150, 50, 87, 132);
 
@@ -48,6 +54,10 @@ public class Board1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Tester(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tester
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tester
 
     /**
      * @param args the command line arguments
