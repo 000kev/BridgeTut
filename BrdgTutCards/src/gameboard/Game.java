@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package gameboard;
-
+import players.ui.*;
 /**
  *
  * @author kevin
@@ -16,6 +16,7 @@ public class Game {
         GameBoard game = new GameBoard();
         
         game.setVisible(true);
+        //game.setState(game.getWest());
     }
 
 }

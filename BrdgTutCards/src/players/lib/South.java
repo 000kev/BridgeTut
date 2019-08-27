@@ -10,7 +10,7 @@ import cards.lib.*;
  *
  * @author kevin
  */
-public class South implements Player, Score {
+public class South implements Player {
     
    
     private static Hand hand;

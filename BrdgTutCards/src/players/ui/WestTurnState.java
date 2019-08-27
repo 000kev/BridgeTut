@@ -17,9 +17,10 @@ public class WestTurnState implements State{
     private boolean turn = true;
     
     public WestTurnState() {
-        turn = false;
+        turn = true;
     }
     
+    @Override
     public void userAction(java.awt.event.MouseEvent evt, Card card) {
         if (validAction()) {
             card.setBounds(550, 300, 87, 132);

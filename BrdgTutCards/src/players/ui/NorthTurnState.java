@@ -26,7 +26,7 @@ public class NorthTurnState implements State {
             card.setBounds(700, 300, 87, 132); 
             System.out.println("NORTH: "+card+" has moved positions");
         }
-        else System.out.println("Invalid move");
+        else System.out.println("Invalid action");
     }
     
     @Override

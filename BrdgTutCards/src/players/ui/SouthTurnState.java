@@ -17,13 +17,10 @@ public class SouthTurnState implements State {
     private boolean turn = true;
     
     public SouthTurnState() {
-        turn = false;
-    }
-    
-    public SouthTurnState(gameboard.GameBoard context) {
         turn = true;
     }
     
+    @Override
     public void userAction(java.awt.event.MouseEvent evt, Card card) {
         if(validAction()) {
             card.setBounds(600, 300, 87, 132);

@@ -9,6 +9,6 @@ package players.lib;
  *
  * @author kevin
  */
-public interface Score {
+public class Score {
     
 }

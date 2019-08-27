@@ -134,6 +134,22 @@ public class GameBoard extends javax.swing.JFrame {
         current_state = state;
     }
     
+    public State getNorth() {
+        return north_state;
+    }
+    
+    public State getSouth() {
+        return south_state;
+    }
+    
+    public State getEast() {
+        return east_state;
+    }
+    
+    public State getWest() {
+        return west_state;
+    }
+    
     private void onNorthAction(java.awt.event.MouseEvent evt, cards.lib.Card card) {
         current_state.onNorthAction(evt, card);
     }

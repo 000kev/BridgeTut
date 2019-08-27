@@ -17,9 +17,10 @@ public class EastTurnState implements State{
     private boolean turn = true;
     
     public EastTurnState() {
-        turn = false;
+        turn = true;
     }
     
+    @Override
     public void userAction(java.awt.event.MouseEvent evt, Card card) {
         if (validAction()) {
             card.setBounds(650, 300, 87, 132);
