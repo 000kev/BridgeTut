@@ -14,7 +14,7 @@ import players.ui.*;
  *
  * @author kevin
  */
-public class GameBoard extends javax.swing.JFrame {
+public class GameBoard extends javax.swing.JFrame implements Score {
 
     
     // Variables declaration - do not modify 
@@ -23,9 +23,10 @@ public class GameBoard extends javax.swing.JFrame {
     private static South south; private static State south_state;
     private static East east; private static State east_state;
     private static West west; private static State west_state;
-    
     private static State current_state;
+    private static ArrayList<Card> playedCards;
     // End of variables declaration 
+    
     
     /**
      * Creates new form board
@@ -35,6 +36,7 @@ public class GameBoard extends javax.swing.JFrame {
         south = new South(); south_state = new SouthTurnState();
         east = new East(); east_state = new EastTurnState();
         west = new West(); west_state = new WestTurnState();
+        playedCards = new ArrayList<>();
         current_state = north_state;
         
         initDeck();

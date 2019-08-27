@@ -13,9 +13,11 @@ import cards.lib.*;
 public class North implements Player {
 
     private static Hand hand;
+    private boolean has_played;
     
     public North() {
         hand = new Hand();
+        has_played = false;
     }
     
     @Override
