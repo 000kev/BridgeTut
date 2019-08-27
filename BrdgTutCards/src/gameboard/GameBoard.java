@@ -23,6 +23,8 @@ public class GameBoard extends javax.swing.JFrame {
     private static South south; private static State south_state;
     private static East east; private static State east_state;
     private static West west; private static State west_state;
+    
+    private static State current_state;
     // End of variables declaration 
     
     /**
@@ -33,6 +35,8 @@ public class GameBoard extends javax.swing.JFrame {
         south = new South(); south_state = new SouthTurnState();
         east = new East(); east_state = new EastTurnState();
         west = new West(); west_state = new WestTurnState();
+        current_state = north_state;
+        
         initDeck();
         initComponents();
     }
@@ -50,28 +54,32 @@ public class GameBoard extends javax.swing.JFrame {
                 case "class players.lib.North":
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            north_state.Tester(evt, card);
+                            //north_state.userAction(evt, card);
+                            onNorthAction(evt, card);
                         }
                     });
                     break;
                 case "class players.lib.South":
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            south_state.Tester(evt, card);
+                            //south_state.userAction(evt, card);
+                            onSouthAction(evt, card);
                         }
                     });
                     break;
                 case "class players.lib.East":
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            east_state.Tester(evt, card);
+                            //east_state.userAction(evt, card);
+                            onEastAction(evt, card);
                         }
                     });
                     break;
                 case "class players.lib.West":
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            west_state.Tester(evt, card);
+                            //west_state.userAction(evt, card);
+                            onWestAction(evt, card);
                         }
                     });
             }
@@ -93,10 +101,9 @@ public class GameBoard extends javax.swing.JFrame {
     }
     
     private void initComponents() {
-
+        
         panel1 = new java.awt.Panel();
         
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(44, 107, 16));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -119,57 +126,27 @@ public class GameBoard extends javax.swing.JFrame {
         panel1.setBounds(0, 0, 1300, 710);
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>   
     
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Board1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Board1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Board1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Board1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        panel1 = new java.awt.Panel();
-        
-        /* Shuffle the deck and deal the cards */
-        Deck deck = new Deck();
-        deck.shuffle(new Random());
-      
-        /* Deal hand to each of the players (N,S,E,W) */
-        
-        while (!deck.isEmpty()) {
-            north.dealHand(deck.removeTop());
-            south.dealHand(deck.removeTop());
-            east.dealHand(deck.removeTop());
-            west.dealHand(deck.removeTop());
-        }
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GameBoard().setVisible(true);
-            }
-
-        });
-    }                  
+    /* state tools */
+    public void setState(State state) {
+        current_state = state;
+    }
+    
+    private void onNorthAction(java.awt.event.MouseEvent evt, cards.lib.Card card) {
+        current_state.onNorthAction(evt, card);
+    }
+    
+    private void onSouthAction(java.awt.event.MouseEvent evt, cards.lib.Card card) {
+        current_state.onSouthAction(evt, card);
+    }
+    
+    private void onEastAction(java.awt.event.MouseEvent evt, cards.lib.Card card) {
+        current_state.onEastAction(evt, card);
+    }
+    
+    private void onWestAction(java.awt.event.MouseEvent evt, cards.lib.Card card) {
+        current_state.onWestAction(evt, card);
+    }
 }

@@ -12,8 +12,19 @@ package players.ui;
  */
 public interface State {
     
-    public void Tester(java.awt.event.MouseEvent evt, cards.lib.Card card);
+    public void userAction(java.awt.event.MouseEvent evt, cards.lib.Card card);
     
     public boolean validAction();
     
+    public boolean getTurn();
+    
+    public void setTurn(boolean turn);
+    
+    public void onNorthAction(java.awt.event.MouseEvent evt, cards.lib.Card card);
+    
+    public void onSouthAction(java.awt.event.MouseEvent evt, cards.lib.Card card);
+    
+    public void onEastAction(java.awt.event.MouseEvent evt, cards.lib.Card card);
+    
+    public void onWestAction(java.awt.event.MouseEvent evt, cards.lib.Card card);
 }
