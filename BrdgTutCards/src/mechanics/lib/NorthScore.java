@@ -1,0 +1,57 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package mechanics.lib;
+
+import cards.lib.Card;
+import gameboard.GameBoard;
+
+/**
+ *
+ * @author kevin
+ */
+public class NorthScore implements Score {
+
+    private static Card card;
+    
+    public NorthScore() {
+        card = new Card();
+    }
+    
+    public NorthScore(Card card) {
+        this.card = card;
+    }
+    
+    @Override
+    public Card getCard() {
+        return card;
+    }
+    
+    @Override
+    public void initTrick() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void initTrick(GameBoard context) {
+        context.setState(context.getNorthState());
+    }
+
+    @Override
+    public void wonTrick() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void calcScore() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int tallyRound() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+}
