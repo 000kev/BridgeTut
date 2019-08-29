@@ -17,14 +17,15 @@ public class Game {
         
         game.setVisible(true);
         //game.setState(game.getWestState());
-        System.out.println(game.roundComplete());
+        //System.out.println(game.roundComplete();
+        boolean north_played = game.getNorthState().hasPlayed();
         while (!game.roundComplete()) {
-            System.out.println();
-            if (game.getNorthState().hasPlayed()) {
-                //System.out.println("Next player's turn.");
+                System.out.print("i");
+            if (north_played) {
+                System.out.println("Next player's turn.");
                 game.setState(game.getSouthState());
             }
-        }
+        } 
         System.out.println("cleared a round");
         game.tallyRound();
     }
