@@ -5,24 +5,27 @@
  */
 package gameboard;
 import cards.lib.*;
-import java.util.ArrayList;
 import players.lib.*;
-import java.util.Random;
 import players.ui.*;
+import mechanics.lib.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
  * @author kevin
  */
-public class GameBoard extends javax.swing.JFrame implements Score {
+public class GameBoard extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify 
     private static java.awt.Panel panel1;
-    private static North north; private static State north_state;
-    private static South south; private static State south_state;
-    private static East east; private static State east_state;
-    private static West west; private static State west_state;
+    
+    private static North north; private static State north_state; private static Score north_score;
+    private static South south; private static State south_state; private static Score south_score;
+    private static East east; private static State east_state; private static Score east_score;
+    private static West west; private static State west_state; private static Score west_score;
+    
     private static State current_state;
     private static ArrayList<Card> playedCards;
     // End of variables declaration 
@@ -32,12 +35,13 @@ public class GameBoard extends javax.swing.JFrame implements Score {
      * Creates new form board
      */
     public GameBoard() {
-        north = new North(); north_state = new NorthTurnState();
-        south = new South(); south_state = new SouthTurnState();
+        north = new North(); north_state = new NorthTurnState(this); north_score = new NorthScore();
+        south = new South(); south_state = new SouthTurnState(); south_score = new SouthScore();
         east = new East(); east_state = new EastTurnState();
         west = new West(); west_state = new WestTurnState();
+        
+        north_score.initTrick(this);
         playedCards = new ArrayList<>();
-        current_state = north_state;
         
         initDeck();
         initComponents();
@@ -136,19 +140,19 @@ public class GameBoard extends javax.swing.JFrame implements Score {
         current_state = state;
     }
     
-    public State getNorth() {
+    public State getNorthState() {
         return north_state;
     }
     
-    public State getSouth() {
+    public State getSouthState() {
         return south_state;
     }
     
-    public State getEast() {
+    public State getEastState() {
         return east_state;
     }
     
-    public State getWest() {
+    public State getWestState() {
         return west_state;
     }
     
@@ -166,5 +170,49 @@ public class GameBoard extends javax.swing.JFrame implements Score {
     
     private void onWestAction(java.awt.event.MouseEvent evt, cards.lib.Card card) {
         current_state.onWestAction(evt, card);
+    }
+    
+    /* game mechanics */
+    
+    public Player getNorth() {
+        return north;
+    }
+    
+    public Player getSouth() {
+        return south;
+    }
+    
+    public Player getEast() {
+        return east;
+    }
+    
+    public Player getWest() {
+        return west;
+    }
+    public void scoreNorth(Card card) {
+        north_score = new NorthScore(card);
+    }
+    
+    public void scoreSouth(Card card) {
+        
+    }
+    
+    public void scoreEast(Card card) {
+        
+    }
+    
+    public void scoreWest(Card card) {
+        
+    }
+    
+    public void tallyRound() {
+        Card n = north_score.getCard();
+        Card s = south_score.getCard();
+        System.out.println("TALLY: "+n+", "+s);
+    }
+    
+    public boolean roundComplete() {
+        return north_state.hasPlayed() && south_state.hasPlayed();
+               //& east_state.hasPlayed() && west_state.hasPlayed();
     }
 }

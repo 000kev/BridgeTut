@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package players.ui;
-
+import players.lib.*;
 
 /**
  *
@@ -27,4 +27,9 @@ public interface State {
     public void onEastAction(java.awt.event.MouseEvent evt, cards.lib.Card card);
     
     public void onWestAction(java.awt.event.MouseEvent evt, cards.lib.Card card);
+    
+    public Player getPlayer();
+    
+    public boolean hasPlayed();
+    
 }

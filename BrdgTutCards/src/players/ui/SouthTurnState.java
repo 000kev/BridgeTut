@@ -7,6 +7,7 @@ package players.ui;
 
 import cards.lib.Card;
 import java.awt.event.MouseEvent;
+import players.lib.Player;
 
 /**
  *
@@ -15,14 +16,22 @@ import java.awt.event.MouseEvent;
 public class SouthTurnState implements State {
     
     private boolean turn = true;
+    private boolean has_played;
     
     public SouthTurnState() {
         turn = true;
+        has_played = false;
+    }
+    
+    @Override
+    public boolean hasPlayed() {
+        return has_played;
     }
     
     @Override
     public void userAction(java.awt.event.MouseEvent evt, Card card) {
         if(validAction()) {
+            has_played=true;
             card.setBounds(600, 300, 87, 132);
             System.out.println("SOUTH: "+card+" has moved positions");
         }
@@ -61,5 +70,10 @@ public class SouthTurnState implements State {
     @Override
     public void onWestAction(MouseEvent evt, Card card) {
         System.out.println("Locked");
+    }
+
+    @Override
+    public Player getPlayer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

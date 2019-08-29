@@ -16,7 +16,17 @@ public class Game {
         GameBoard game = new GameBoard();
         
         game.setVisible(true);
-        //game.setState(game.getWest());
+        //game.setState(game.getWestState());
+        System.out.println(game.roundComplete());
+        while (!game.roundComplete()) {
+            System.out.println();
+            if (game.getNorthState().hasPlayed()) {
+                //System.out.println("Next player's turn.");
+                game.setState(game.getSouthState());
+            }
+        }
+        System.out.println("cleared a round");
+        game.tallyRound();
     }
 
 }

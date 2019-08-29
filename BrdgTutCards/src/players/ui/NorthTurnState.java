@@ -6,7 +6,9 @@
 package players.ui;
 
 import cards.lib.Card;
+import gameboard.GameBoard;
 import java.awt.event.MouseEvent;
+import players.lib.Player;
 
 /**
  *
@@ -15,14 +17,19 @@ import java.awt.event.MouseEvent;
 public class NorthTurnState implements State {
     
     private boolean turn;
+    private GameBoard context;
+    private boolean has_played;
     
-    public NorthTurnState() {
+    public NorthTurnState(GameBoard ctxt) {
+        context=ctxt;
         turn = true;
+        has_played = false;
     }
     
     @Override
     public void userAction(java.awt.event.MouseEvent evt, Card card) {
         if (validAction()) {
+            has_played=true;
             card.setBounds(700, 300, 87, 132); 
             System.out.println("NORTH: "+card+" has moved positions");
         }
@@ -47,6 +54,7 @@ public class NorthTurnState implements State {
     @Override
     public void onNorthAction(MouseEvent evt, Card card) {
         userAction(evt, card);
+        context.scoreNorth(card);
     }
 
     @Override
@@ -63,5 +71,14 @@ public class NorthTurnState implements State {
     public void onWestAction(MouseEvent evt, Card card) {
         System.out.println("Locked");
     }
+
+    @Override
+    public Player getPlayer() {
+        return context.getNorth();
+    }
     
+    @Override
+    public boolean hasPlayed() {
+        return has_played;
+    }
 }

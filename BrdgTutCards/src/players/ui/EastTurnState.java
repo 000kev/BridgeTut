@@ -7,6 +7,7 @@ package players.ui;
 
 import cards.lib.Card;
 import java.awt.event.MouseEvent;
+import players.lib.Player;
 
 /**
  *
@@ -15,9 +16,11 @@ import java.awt.event.MouseEvent;
 public class EastTurnState implements State{ 
     
     private boolean turn = true;
+    private boolean has_played;
     
-    public EastTurnState() {
-        turn = true;
+    @Override
+    public boolean hasPlayed() {
+        return has_played;
     }
     
     @Override
@@ -61,5 +64,10 @@ public class EastTurnState implements State{
     @Override
     public void onWestAction(MouseEvent evt, Card card) {
         System.out.println("Locked");
+    }
+
+    @Override
+    public Player getPlayer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

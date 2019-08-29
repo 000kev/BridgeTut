@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package players.lib;
+package mechanics.lib;
 
 /**
  *
  * @author kevin
  */
-public interface Score {
-    
+public class EastScore {
     
 }
