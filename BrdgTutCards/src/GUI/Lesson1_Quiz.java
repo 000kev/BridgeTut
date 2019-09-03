@@ -160,6 +160,7 @@ public class Lesson1_Quiz extends javax.swing.JFrame {
         pnlMain.setBounds(0, 0, 1060, 630);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 //Variables
     

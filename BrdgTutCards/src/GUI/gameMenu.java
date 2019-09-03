@@ -105,6 +105,7 @@ public class gameMenu extends javax.swing.JFrame {
         pnlGameMenu.setBounds(0, 0, 540, 360);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

@@ -73,6 +73,7 @@ public class exitScreen extends javax.swing.JFrame {
         pnlExitScreen.setBounds(0, 0, 520, 230);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed

@@ -18,7 +18,6 @@ public class LoginScreen extends javax.swing.JFrame {
      */
     public LoginScreen() {
         initComponents();
-        
         pnlLogin.setPreferredSize(new Dimension(500, 500));
         setSize(new Dimension(580, 400));
     }
@@ -84,13 +83,18 @@ public class LoginScreen extends javax.swing.JFrame {
         btnNewUser.setBounds(210, 320, 150, 30);
 
         txfUserName.setText("Enter Username here");
+        txfUserName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txfUserNameFocusGained(evt);
+            }
+        });
         pnlLogin.add(txfUserName);
         txfUserName.setBounds(260, 100, 210, 30);
 
         pswfPassword.setText("12345");
-        pswfPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pswfPasswordActionPerformed(evt);
+        pswfPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pswfPasswordFocusGained(evt);
             }
         });
         pnlLogin.add(pswfPassword);
@@ -105,6 +109,7 @@ public class LoginScreen extends javax.swing.JFrame {
         pnlLogin.setBounds(0, 0, 580, 400);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 //Variables
     String userName;
@@ -146,9 +151,13 @@ public class LoginScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void pswfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswfPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pswfPasswordActionPerformed
+    private void txfUserNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfUserNameFocusGained
+        txfUserName.setText("");
+    }//GEN-LAST:event_txfUserNameFocusGained
+
+    private void pswfPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pswfPasswordFocusGained
+        pswfPassword.setText("");
+    }//GEN-LAST:event_pswfPasswordFocusGained
 
     /**
      * @param args the command line arguments

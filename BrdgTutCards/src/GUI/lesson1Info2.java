@@ -100,6 +100,7 @@ public class lesson1Info2 extends javax.swing.JFrame {
         pnlLesson1MoreInfo.setBounds(0, 0, 520, 500);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

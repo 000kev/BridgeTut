@@ -73,10 +73,20 @@ public class newUserAccountScreen extends javax.swing.JFrame {
         lblPassword.setBounds(60, 130, 180, 59);
 
         txfuserName.setText("Enter your username here");
+        txfuserName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txfuserNameFocusGained(evt);
+            }
+        });
         pnlNewAcc.add(txfuserName);
         txfuserName.setBounds(290, 100, 170, 30);
 
         txfPswrd.setText("Enter Password here");
+        txfPswrd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txfPswrdFocusGained(evt);
+            }
+        });
         pnlNewAcc.add(txfPswrd);
         txfPswrd.setBounds(290, 150, 170, 30);
 
@@ -151,6 +161,14 @@ public class newUserAccountScreen extends javax.swing.JFrame {
                 this.setVisible(false);
                 this.dispose(); 
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txfuserNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfuserNameFocusGained
+        txfuserName.setText("");
+    }//GEN-LAST:event_txfuserNameFocusGained
+
+    private void txfPswrdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfPswrdFocusGained
+        txfPswrd.setText("");
+    }//GEN-LAST:event_txfPswrdFocusGained
 
     /**
      * @param args the command line arguments
