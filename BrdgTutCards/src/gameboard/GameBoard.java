@@ -28,6 +28,7 @@ public class GameBoard extends javax.swing.JFrame {
     
     private static State current_state;
     private static ArrayList<Card> playedCards;
+    private static int trump_suit;
     // End of variables declaration 
     
     
@@ -35,17 +36,20 @@ public class GameBoard extends javax.swing.JFrame {
      * Creates new form board
      */
     public GameBoard() {
-        north = new North(); north_state = new NorthTurnState(this); north_score = new NorthScore();
-        south = new South(); south_state = new SouthTurnState(); south_score = new SouthScore();
-        east = new East(); east_state = new EastTurnState();
-        west = new West(); west_state = new WestTurnState();
+        north = new North(); north_state = new NorthTurnState(this,east_state); north_score = new NorthScore(north);
+        south = new South(); south_state = new SouthTurnState(this,west_state); south_score = new SouthScore(south);
+        east = new East(); east_state = new EastTurnState(this,south_state); east_score = new EastScore(east);
+        west = new West(); west_state = new WestTurnState(this,north_state); west_score = new WestScore(west);
         
-        north_score.initTrick(this);
         playedCards = new ArrayList<>();
+        north_score.initTrick(this);
+        current_state = north_state;
         
         initDeck();
         initComponents();
     }
+    
+    
     
     private void addHand(Player player) {
         Hand hand = player.getHand();
@@ -61,6 +65,8 @@ public class GameBoard extends javax.swing.JFrame {
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                             //north_state.userAction(evt, card);
+                            if (north_score.isTrump()) 
+                                trump_suit = card.getSuit();
                             onNorthAction(evt, card);
                         }
                     });
@@ -69,6 +75,8 @@ public class GameBoard extends javax.swing.JFrame {
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                             //south_state.userAction(evt, card);
+                            if (south_score.isTrump()) 
+                                trump_suit = card.getSuit();
                             onSouthAction(evt, card);
                         }
                     });
@@ -77,6 +85,8 @@ public class GameBoard extends javax.swing.JFrame {
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                             //east_state.userAction(evt, card);
+                            if (east_score.isTrump()) 
+                                trump_suit = card.getSuit();
                             onEastAction(evt, card);
                         }
                     });
@@ -85,6 +95,8 @@ public class GameBoard extends javax.swing.JFrame {
                     card.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                             //west_state.userAction(evt, card);
+                            if (west_score.isTrump()) 
+                                trump_suit = card.getSuit();
                             onWestAction(evt, card);
                         }
                     });
@@ -136,7 +148,7 @@ public class GameBoard extends javax.swing.JFrame {
     
     
     /* state tools */
-    public void setState(State state) {
+    public static void setState(State state) {
         current_state = state;
     }
     
@@ -157,19 +169,35 @@ public class GameBoard extends javax.swing.JFrame {
     }
     
     private void onNorthAction(java.awt.event.MouseEvent evt, cards.lib.Card card) {
+        
         current_state.onNorthAction(evt, card);
+        north_score.setCard(card);
+        if (north_score.isTrump()) 
+                trump_suit = card.getSuit();
     }
     
     private void onSouthAction(java.awt.event.MouseEvent evt, cards.lib.Card card) {
+        
         current_state.onSouthAction(evt, card);
+        south_score.setCard(card);
+        if (south_score.isTrump()) 
+                trump_suit = card.getSuit();
     }
     
     private void onEastAction(java.awt.event.MouseEvent evt, cards.lib.Card card) {
+        
         current_state.onEastAction(evt, card);
+        east_score.setCard(card);
+        if (east_score.isTrump()) 
+                trump_suit = card.getSuit();
     }
     
     private void onWestAction(java.awt.event.MouseEvent evt, cards.lib.Card card) {
+        
         current_state.onWestAction(evt, card);
+        west_score.setCard(card);
+        if (west_score.isTrump()) 
+                trump_suit = card.getSuit();
     }
     
     /* game mechanics */
@@ -189,30 +217,152 @@ public class GameBoard extends javax.swing.JFrame {
     public Player getWest() {
         return west;
     }
-    public void scoreNorth(Card card) {
-        north_score = new NorthScore(card);
+
+    // method uses if's to control the flow of play
+    public void play() {
+            
+            if (current_state==north_state) {
+                
+                if (current_state.hasPlayed()) {
+                    setState(east_state);
+                }
+            }
+            else if (current_state==south_state) {
+                
+                if (current_state.hasPlayed()) {
+                    setState(west_state);
+                }
+            }
+            else if (current_state==east_state) {
+                
+                if (current_state.hasPlayed()) {
+                    setState(south_state);
+                }
+            }
+            else if (current_state==west_state) {
+                
+                if (current_state.hasPlayed()) {
+                    setState(north_state);
+                }
+            }
     }
     
-    public void scoreSouth(Card card) {
-        
-    }
-    
-    public void scoreEast(Card card) {
-        
-    }
-    
-    public void scoreWest(Card card) {
-        
-    }
     
     public void tallyRound() {
-        Card n = north_score.getCard();
-        Card s = south_score.getCard();
-        System.out.println("TALLY: "+n+", "+s);
+        int n = north_score.getCard().getValue();
+        int s = south_score.getCard().getValue();
+        int e = east_score.getCard().getValue();
+        int w = west_score.getCard().getValue();
+        
+        System.out.println("N: "+n);
+        System.out.println("E: "+e);
+        System.out.println("S: "+s);
+        System.out.println("W: "+w);
+        
+        if (n==1) {
+            System.out.println("North wins the trick");
+            north.wonRound();
+            newRound();
+            north_score.initTrick(this);
+            current_state=north_state;
+        }
+        else if (s==1) {
+            System.out.println("South wins the trick");
+            south.wonRound();
+            newRound();
+            south_score.initTrick(this);
+            current_state=south_state;
+        }
+        else if (e==1) {
+            System.out.println("East wins the trick");
+            east.wonRound();
+            newRound();
+            east_score.initTrick(this);
+            current_state=east_state;
+        }
+        else if (w==1){
+            System.out.println("West wins the trick");
+            west.wonRound();
+            newRound();
+            west_score.initTrick(this);
+            current_state=west_state;
+        }
+        else {
+            if (n>s && n>e && n>w) {
+                System.out.println("North wins the trick");
+                north.wonRound();
+                newRound();
+                north_score.initTrick(this);
+                current_state=north_state;
+            }
+            else if (s>n && s>e && s>w) {
+                System.out.println("South wins the trick");
+                south.wonRound();
+                newRound();
+                south_score.initTrick(this);
+                current_state=south_state;
+            }
+            else if (e>n && e>s && e>w) {
+                System.out.println("East wins the trick");
+                east.wonRound();
+                newRound();
+                east_score.initTrick(this);
+                current_state=east_state;
+            }
+            else if (w>n && w>s && w>e) {
+                System.out.println("West wins the trick");
+                west.wonRound();
+                newRound();
+                west_score.initTrick(this);
+                current_state=west_state;
+            }
+        }
+    }
+    
+    public boolean validAction(Hand hand, Card card) {
+        if (card.getSuit()==trump_suit) return true;
+        else for (int i=0; i<hand.getCardCount(); i++) {
+            if (hand.getCard(i).getSuit()==trump_suit) return false;
+        }
+        return true;
     }
     
     public boolean roundComplete() {
-        return north_state.hasPlayed() && south_state.hasPlayed();
-               //& east_state.hasPlayed() && west_state.hasPlayed();
+        return north_state.hasPlayed() && south_state.hasPlayed()
+               && east_state.hasPlayed() && west_state.hasPlayed();
+    }
+    
+    public boolean gameOver() {
+        if (current_state.getPlayer().getHand().getCardCount()==0) {
+            System.out.println("GAME OVER");
+            return true;
+        }
+        else return false;
+    }
+    
+    
+    private void newRound() {
+        System.out.println("Next round");
+        
+        Card n = north_score.getCard(); n.setVisible(false);
+        Card s = south_score.getCard(); s.setVisible(false);
+        Card e = east_score.getCard(); e.setVisible(false);
+        Card w = west_score.getCard(); w.setVisible(false);
+        
+        playedCards.add(n); north.removeCard(n);
+        playedCards.add(s); south.removeCard(s);
+        playedCards.add(e); east.removeCard(e); 
+        playedCards.add(w); west.removeCard(w); 
+           
+        north_score = new NorthScore(north);
+        south_score = new SouthScore(south);
+        east_score = new EastScore(east);
+        west_score = new WestScore(west);
+        
+        north_state = new NorthTurnState(this);
+        south_state = new SouthTurnState(this);
+        east_state = new EastTurnState(this);
+        west_state = new WestTurnState(this);
+        
     }
 }

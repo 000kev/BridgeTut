@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui.lessons;
 
 import java.awt.Dimension;
 
@@ -88,7 +88,7 @@ public class lesson1Info3 extends javax.swing.JFrame {
             }
         });
         pnlLessonInfo3.add(btnPrev);
-        btnPrev.setBounds(30, 210, 40, 23);
+        btnPrev.setBounds(30, 210, 40, 30);
 
         lblMainBackGrnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageAssets/greenBackground.jpg"))); // NOI18N
         lblMainBackGrnd.setText("jLabel1");
@@ -99,7 +99,6 @@ public class lesson1Info3 extends javax.swing.JFrame {
         pnlLessonInfo3.setBounds(0, 0, 520, 500);
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

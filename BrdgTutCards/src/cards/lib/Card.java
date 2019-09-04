@@ -24,6 +24,8 @@ public class Card extends javax.swing.JPanel {
 
     private javax.swing.JLabel jLabel1;
     private String reference="";
+    
+    private static boolean trump;
     /**
      * This card's suit, one of the constants SPADES, HEARTS, DIAMONDS,
      * CLUBS.
@@ -41,8 +43,9 @@ public class Card extends javax.swing.JPanel {
      * "new Card()" is equivalent to "new Card(1,Card.JOKER)".)
      */
     public Card() {
-        suit = DIAMONDS;
-        value = 10;
+        trump = false;
+        suit = JOKER;
+        value = 1;
         
         switch (value) {
             case 1:
@@ -112,6 +115,7 @@ public class Card extends javax.swing.JPanel {
      * permissible ranges
      */
     public Card(int theValue, int theSuit) {
+        trump = false;
         if (theSuit != SPADES && theSuit != HEARTS && theSuit != DIAMONDS && 
                 theSuit != CLUBS && theSuit != JOKER)
             throw new IllegalArgumentException("Illegal playing card suit");
@@ -173,7 +177,14 @@ public class Card extends javax.swing.JPanel {
     public int getValue() {
         return value;
     }
-
+    
+    public void setTrump() {
+        trump = true;
+    }
+    
+    public boolean isTrump() {
+        return trump;
+    }
     /**
      * Returns a String representation of the card's suit.
      * @return one of the strings "Spades", "Hearts", "Diamonds", "Clubs"

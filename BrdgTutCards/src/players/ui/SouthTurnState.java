@@ -6,6 +6,8 @@
 package players.ui;
 
 import cards.lib.Card;
+import cards.lib.Hand;
+import gameboard.GameBoard;
 import java.awt.event.MouseEvent;
 import players.lib.Player;
 
@@ -15,12 +17,24 @@ import players.lib.Player;
  */
 public class SouthTurnState implements State {
     
-    private boolean turn = true;
+    private boolean turn;
     private boolean has_played;
+    private static GameBoard context;
+    private static State next;
     
     public SouthTurnState() {
-        turn = true;
         has_played = false;
+        next = context.getWestState();
+    }
+    public SouthTurnState(GameBoard cxt) {
+        has_played = false;
+        context = cxt;
+        next = context.getWestState();
+    }
+    public SouthTurnState(GameBoard cxt, State next) {
+        has_played = false;
+        context = cxt;
+        this.next = next;
     }
     
     @Override
@@ -30,15 +44,18 @@ public class SouthTurnState implements State {
     
     @Override
     public void userAction(java.awt.event.MouseEvent evt, Card card) {
-        if(validAction()) {
-            has_played=true;
+        Hand hand = context.getSouth().getHand();
+        if(context.validAction(hand, card) && has_played==false) {
             card.setBounds(600, 300, 87, 132);
             System.out.println("SOUTH: "+card+" has moved positions");
+            has_played=true;
         }
         else System.out.println("Invalid action");
     }
     
+    @Override
     public boolean validAction() {
+        //context.getNorthState(
         return turn;
     }
 
@@ -74,6 +91,11 @@ public class SouthTurnState implements State {
 
     @Override
     public Player getPlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return context.getSouth();
+    }
+
+    @Override
+    public State getNext() {
+        return next;
     }
 }

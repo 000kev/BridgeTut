@@ -15,8 +15,10 @@ import cards.lib.Hand;
 public class East implements Player{
     
     private static Hand hand;
+    private static int trick;
     
     public East() {
+        trick = 0;
         hand = new Hand();
     }
 
@@ -56,6 +58,16 @@ public class East implements Player{
     public Hand getHand() {
         return hand;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public void wonRound() {
+        trick++;
+    }
+    
+    @Override
+    public void removeCard(Card card) {
+        hand.removeCard(card);
     }
     
 }

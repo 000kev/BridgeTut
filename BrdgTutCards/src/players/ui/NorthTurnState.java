@@ -6,6 +6,7 @@
 package players.ui;
 
 import cards.lib.Card;
+import cards.lib.Hand;
 import gameboard.GameBoard;
 import java.awt.event.MouseEvent;
 import players.lib.Player;
@@ -19,27 +20,36 @@ public class NorthTurnState implements State {
     private boolean turn;
     private GameBoard context;
     private boolean has_played;
+    private static State next;
     
-    public NorthTurnState(GameBoard ctxt) {
-        context=ctxt;
-        turn = true;
+    public NorthTurnState() {
         has_played = false;
+        next=context.getEastState();
+    }
+    
+    public NorthTurnState(GameBoard context) {
+        this.context=context;
+        has_played = false;
+        next=context.getEastState();
+    }
+    
+    public NorthTurnState(GameBoard context, State next) {
+        this.context=context;
+        has_played = false;
+        this.next = next;
     }
     
     @Override
     public void userAction(java.awt.event.MouseEvent evt, Card card) {
-        if (validAction()) {
-            has_played=true;
+        Hand hand = context.getNorth().getHand();
+        if (context.validAction(hand, card) && has_played==false) {
             card.setBounds(700, 300, 87, 132); 
             System.out.println("NORTH: "+card+" has moved positions");
+            has_played=true;
         }
         else System.out.println("Invalid action");
     }
     
-    @Override
-    public boolean validAction() {
-        return turn;
-    }
 
     @Override
     public void setTurn(boolean flag) {
@@ -54,7 +64,6 @@ public class NorthTurnState implements State {
     @Override
     public void onNorthAction(MouseEvent evt, Card card) {
         userAction(evt, card);
-        context.scoreNorth(card);
     }
 
     @Override
@@ -80,5 +89,15 @@ public class NorthTurnState implements State {
     @Override
     public boolean hasPlayed() {
         return has_played;
+    }
+
+    @Override
+    public boolean validAction() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public State getNext() {
+        return next;
     }
 }

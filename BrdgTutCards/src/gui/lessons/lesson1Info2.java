@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui.lessons;
 
 import java.awt.Dimension;
 
@@ -67,7 +67,7 @@ public class lesson1Info2 extends javax.swing.JFrame {
             }
         });
         pnlLesson1MoreInfo.add(btnNext);
-        btnNext.setBounds(450, 210, 40, 23);
+        btnNext.setBounds(450, 210, 40, 30);
 
         btnPrev.setText("<");
         btnPrev.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +76,7 @@ public class lesson1Info2 extends javax.swing.JFrame {
             }
         });
         pnlLesson1MoreInfo.add(btnPrev);
-        btnPrev.setBounds(30, 210, 41, 23);
+        btnPrev.setBounds(30, 210, 20, 30);
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageAssets/arrow-112-32.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +100,6 @@ public class lesson1Info2 extends javax.swing.JFrame {
         pnlLesson1MoreInfo.setBounds(0, 0, 520, 500);
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

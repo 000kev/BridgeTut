@@ -7,6 +7,7 @@ package mechanics.lib;
 
 import cards.lib.Card;
 import gameboard.GameBoard;
+import players.lib.South;
 
 /**
  *
@@ -14,24 +15,22 @@ import gameboard.GameBoard;
  */
 public class SouthScore implements Score {
     
-    private static Card card;
+    private static South player;
+    private static Card played_card;
+    private static GameBoard context;
+    public boolean trump;
     
-    public SouthScore() {
-        card = new Card();
-    }
-    
-    public SouthScore(Card card) {
-        this.card = card;
-    }
-
-    @Override
-    public void initTrick() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public SouthScore(South south) {
+        played_card = new Card();
+        trump = false;
+        player = south;
     }
 
     @Override
     public void initTrick(GameBoard context) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.context = context;
+        trump = true;
+        context.setState(context.getSouthState());
     }
 
     @Override
@@ -48,9 +47,19 @@ public class SouthScore implements Score {
     public int tallyRound() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public boolean isTrump() {
+        return trump;
+    }
+
+    @Override
+    public void setCard(Card card) {
+        played_card = card;
+    }
 
     @Override
     public Card getCard() {
-        return card;
+        return played_card;
     }
 }

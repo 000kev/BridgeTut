@@ -14,6 +14,7 @@ public class South implements Player {
     
    
     private static Hand hand;
+    private static int trick;
     
     public South() {
         hand = new Hand();
@@ -54,5 +55,15 @@ public class South implements Player {
     @Override
     public Hand getHand() {
         return hand;
+    }
+    
+    @Override
+    public void wonRound() {
+        trick++;
+    }
+    
+    @Override
+    public void removeCard(Card card) {
+        hand.removeCard(card);
     }
 }
