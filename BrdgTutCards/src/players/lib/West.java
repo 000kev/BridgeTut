@@ -15,7 +15,7 @@ import cards.lib.Hand;
 public class West implements Player {
 
     private static Hand hand;
-    private static int trick;
+    public static int trick;
     
     public West() {
         hand = new Hand();

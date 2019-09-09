@@ -14,7 +14,7 @@ public class North implements Player {
 
     private static Hand hand;
     private static boolean has_played;
-    private static int trick;
+    public static int trick;
 
     
     public North() {

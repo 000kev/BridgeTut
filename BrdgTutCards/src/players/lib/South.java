@@ -14,7 +14,7 @@ public class South implements Player {
     
    
     private static Hand hand;
-    private static int trick;
+    public static int trick;
     
     public South() {
         hand = new Hand();
