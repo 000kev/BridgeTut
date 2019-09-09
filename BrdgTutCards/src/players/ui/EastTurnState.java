@@ -6,6 +6,8 @@
 package players.ui;
 
 import cards.lib.Card;
+import cards.lib.Hand;
+import gameboard.GameBoard;
 import java.awt.event.MouseEvent;
 import players.lib.Player;
 
@@ -17,6 +19,25 @@ public class EastTurnState implements State{
     
     private boolean turn = true;
     private boolean has_played;
+    private static GameBoard context;
+    private static State next;
+    
+    public EastTurnState() {
+        has_played = false;
+        next=context.getSouthState();
+    }
+    
+    public EastTurnState(GameBoard context) {
+        this.context = context;
+        has_played = false;
+        next=context.getSouthState();
+    }
+    
+    public EastTurnState(GameBoard context, State next) {
+        this.context = context;
+        has_played = false;
+        this.next=next;
+    }
     
     @Override
     public boolean hasPlayed() {
@@ -25,9 +46,11 @@ public class EastTurnState implements State{
     
     @Override
     public void userAction(java.awt.event.MouseEvent evt, Card card) {
-        if (validAction()) {
+        Hand hand = context.getEast().getHand();
+        if (context.validAction(hand, card) && has_played==false) {
             card.setBounds(650, 300, 87, 132);
             System.out.println("EAST: "+card+" has moved positions");
+            has_played=true;
         }
         else System.out.println("Invalid action");
     }
@@ -68,6 +91,11 @@ public class EastTurnState implements State{
 
     @Override
     public Player getPlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return context.getEast();
+    }
+
+    @Override
+    public State getNext() {
+        return next;
     }
 }

@@ -13,9 +13,12 @@ import cards.lib.*;
 public class North implements Player {
 
     private static Hand hand;
-    private boolean has_played;
+    private static boolean has_played;
+    public static int trick;
+
     
     public North() {
+        trick = 0;
         hand = new Hand();
         has_played = false;
     }
@@ -50,11 +53,21 @@ public class North implements Player {
     public Card getCard(int index) {
         return hand.getCard(index);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    } 
     
     @Override
     public Hand getHand() {
         return hand;
+    }
+    
+    @Override
+    public void wonRound() {
+        trick++;
+    }
+
+    @Override
+    public void removeCard(Card card) {
+        hand.removeCard(card);
     }
     
 }

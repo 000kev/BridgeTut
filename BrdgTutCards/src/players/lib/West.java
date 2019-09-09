@@ -14,7 +14,8 @@ import cards.lib.Hand;
  */
 public class West implements Player {
 
-    private Hand hand;
+    private static Hand hand;
+    public static int trick;
     
     public West() {
         hand = new Hand();
@@ -58,4 +59,13 @@ public class West implements Player {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
+    public void wonRound() {
+        trick++;
+    }
+    
+    @Override
+    public void removeCard(Card card) {
+        hand.removeCard(card);
+    }
 }

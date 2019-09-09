@@ -23,4 +23,8 @@ public interface Player {
     public Card getCard(int index);
     
     public Hand getHand();
+    
+    public void wonRound();
+    
+    public void removeCard(Card card);
 }

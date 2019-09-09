@@ -13,8 +13,6 @@ import cards.lib.Card;
  */
 public interface Score {
     
-    public void initTrick();
-    
     public void initTrick(gameboard.GameBoard context);
     
     public void wonTrick();
@@ -22,6 +20,10 @@ public interface Score {
     public void calcScore();
     
     public int tallyRound();
+    
+    public boolean isTrump();
+    
+    public void setCard(Card card);
     
     public Card getCard();
 }

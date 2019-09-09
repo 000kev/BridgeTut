@@ -32,4 +32,6 @@ public interface State {
     
     public boolean hasPlayed();
     
+    public State getNext();
+    
 }

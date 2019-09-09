@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package gameboard;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import players.ui.*;
 /**
  *
@@ -16,17 +19,24 @@ public class Game {
         GameBoard game = new GameBoard();
         
         game.setVisible(true);
-        //game.setState(game.getWestState());
-        System.out.println(game.roundComplete());
-        while (!game.roundComplete()) {
-            System.out.println();
-            if (game.getNorthState().hasPlayed()) {
-                //System.out.println("Next player's turn.");
-                game.setState(game.getSouthState());
+        JOptionPane optionPane = new JOptionPane(new JLabel("North starts the game",JLabel.CENTER));
+        JDialog dialog = optionPane.createDialog("Game Start");
+        dialog.setModal(true);
+        dialog.setVisible(true);
+        
+        for (int i=1; i<=13; i++) {
+            while (!game.roundComplete()) {
+            
+            System.out.print("");
+            game.play();
             }
+       
+            System.out.println("cleared round "+i);
+            game.tallyRound();
         }
-        System.out.println("cleared a round");
-        game.tallyRound();
+        
+        game.gameOver();
+        
     }
-
+    
 }

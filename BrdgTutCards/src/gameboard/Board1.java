@@ -5,7 +5,13 @@
  */
 package gameboard;
 import cards.lib.*;
-
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Random;
+import javax.swing.JOptionPane;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import mechanics.lib.*;
 /**
  *
  * @author kevin
@@ -15,8 +21,13 @@ public class Board1 extends javax.swing.JFrame {
     /**
      * Creates new form board
      */
+    private static ArrayList<Card> played_cards;
+    private static Memorization memory;
+    private static javax.swing.JPanel pane;
+    
     public Board1() {
-        initComponents();
+        //initComponents();
+        initCustom();
     }
 
     /**
@@ -29,7 +40,9 @@ public class Board1 extends javax.swing.JFrame {
     private void initComponents() {
 
         panel1 = new java.awt.Panel();
+        jButton2 = new javax.swing.JButton();
         card1 = new cards.lib.Card();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(44, 107, 16));
@@ -41,13 +54,29 @@ public class Board1 extends javax.swing.JFrame {
         panel1.setBackground(new java.awt.Color(47, 144, 27));
         panel1.setLayout(null);
 
-        card1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Tester(evt);
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/assests/icon.png"))); // NOI18N
+        jButton2.setText("jButton2");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                InfoBox(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                InfoBoxClose(evt);
             }
         });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HidePane(evt);
+            }
+        });
+        panel1.add(jButton2);
+        jButton2.setBounds(410, 320, 145, 80);
         panel1.add(card1);
-        card1.setBounds(150, 50, 87, 132);
+        card1.setBounds(80, -220, 691, 1056);
+
+        jPanel1.setOpaque(false);
+        panel1.add(jPanel1);
+        jPanel1.setBounds(780, 260, 80, 220);
 
         getContentPane().add(panel1);
         panel1.setBounds(-50, 0, 1350, 760);
@@ -55,10 +84,143 @@ public class Board1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Tester(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tester
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tester
+    private void InfoBox(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InfoBox
+        JDialog.setDefaultLookAndFeelDecorated(true);
+        Object[] selectionValues = { "Spades", "Diamonds", "Clubs", "Hearts" };
+        String initialSelection = "Spades";
+        Object selection = JOptionPane.showInputDialog(null, "Which played cards would you like to remember?\n(Press enter once finished)" ,
+        "Card Memorization", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
+        ArrayList<Card> test;
+        
+        if (selection=="Spades") {
+            test=memory.getSpades();
+            for (int i=0; i<test.size(); i++) {
+            pane.add(test.get(i));
+            pane.setVisible(true);
+            }
+        
+        }
+        else if (selection=="Diamonds") {
+            test=memory.getDiamonds();
+            for (int i=0; i<test.size(); i++) {
+                pane.add(test.get(i));
+                pane.setVisible(true);
+            }
+        }
+        else if (selection=="Hearts") {
+            test=memory.getHearts();
+            for (int i=0; i<test.size(); i++) {
+                pane.add(test.get(i));
+                pane.setVisible(true);
+            }
+        }
+        else if (selection=="Clubs") {
+            test=memory.getClubs();
+            for (int i=0; i<5; i++) {
+                pane.add(test.get(i));
+                pane.setVisible(true);
+            }
+        }
+        /*
+        
+        
+        for (int i=0; i<test.size(); i++) {
+            pane.add(test.get(i));
+        }
+        pane.setVisible(true);*/
+    }//GEN-LAST:event_InfoBox
 
+    private void InfoBoxClose(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InfoBoxClose
+        //pane.setVisible(false);
+    }//GEN-LAST:event_InfoBoxClose
+
+    private void HidePane(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HidePane
+        pane.removeAll();
+        pane.setVisible(false);
+    }//GEN-LAST:event_HidePane
+
+    private void initCustom() {
+        
+        jButton2 = new javax.swing.JButton();
+        panel1 = new java.awt.Panel();
+        
+        Deck deck = new Deck();
+        deck.shuffle(new Random());
+        
+        played_cards = new ArrayList();
+        memory = new Memorization(played_cards);
+        
+        while (!deck.isEmpty()) {
+            played_cards.add(deck.removeTop());
+        }
+        
+        
+        pane = new javax.swing.JPanel();
+    
+        pane.setBounds(150, 300, 1050, 132);
+      
+        System.out.println(memory.getPlayedSize());
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(44, 107, 16));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setForeground(java.awt.Color.gray);
+        setPreferredSize(new java.awt.Dimension(6000, 4500));
+        getContentPane().setLayout(null);
+
+        
+        panel1.setBackground(new java.awt.Color(47, 144, 27));
+        panel1.setLayout(null);
+        
+        Card card = new Card(2,1);
+        Card card1 = new Card(2,2);
+        pane.setLayout(new javax.swing.BoxLayout(pane, javax.swing.BoxLayout.LINE_AXIS));
+        pane.setOpaque(false);
+        //pane.add(card);
+        //pane.add(card1);
+        /*for (int i=0; i<13; i++) {
+            pane.add(played_cards.get(i));
+        }*/
+        
+        
+        jButton2.setIcon(new javax.swing.ImageIcon("/home/kevin/Desktop/Memorization/icon.png")); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                InfoBox(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                InfoBoxClose(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HidePane(evt);
+            }
+        });
+        
+        
+        
+        
+        /* ArrayList<Card> test = new ArrayList();
+        test = memory.getClubs();
+        
+        for (int i=0; i<test.size(); i++) {
+            pane.add(test.get(i));
+        } */
+        
+        panel1.add(pane);
+        panel1.add(jButton2);
+        jButton2.setBounds(1250, 0, 75, 75);
+        //card.setBounds(80, 220, 87, 132);
+        
+        
+        getContentPane().add(panel1);
+        panel1.setBounds(-50, 0, 1350, 760);
+        pane.setBackground(Color.black);
+        
+        pane.setVisible(false);
+        pack();
+    }
     /**
      * @param args the command line arguments
      */
@@ -86,20 +248,29 @@ public class Board1 extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
-        /* Create and display the form */
+        Board1 game = new Board1();
+        //game.initCustom();
+        
+        
+        /* Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Board1().setVisible(true);
+                //pane.add(played_cards.get(0));
+                panel1.add(new Card(2,1));
             }
 
-        });
+        }); */
+        //game.pack();
+        game.setVisible(true);
         
-
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private cards.lib.Card card1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
     private static java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables
 }
