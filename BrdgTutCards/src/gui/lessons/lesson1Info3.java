@@ -88,7 +88,7 @@ public class lesson1Info3 extends javax.swing.JFrame {
             }
         });
         pnlLessonInfo3.add(btnPrev);
-        btnPrev.setBounds(30, 210, 40, 30);
+        btnPrev.setBounds(30, 210, 40, 23);
 
         lblMainBackGrnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageAssets/greenBackground.jpg"))); // NOI18N
         lblMainBackGrnd.setText("jLabel1");

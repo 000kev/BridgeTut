@@ -67,7 +67,7 @@ public class lesson1Info2 extends javax.swing.JFrame {
             }
         });
         pnlLesson1MoreInfo.add(btnNext);
-        btnNext.setBounds(450, 210, 40, 30);
+        btnNext.setBounds(450, 210, 40, 23);
 
         btnPrev.setText("<");
         btnPrev.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +76,7 @@ public class lesson1Info2 extends javax.swing.JFrame {
             }
         });
         pnlLesson1MoreInfo.add(btnPrev);
-        btnPrev.setBounds(30, 210, 20, 30);
+        btnPrev.setBounds(30, 210, 41, 23);
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageAssets/arrow-112-32.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {

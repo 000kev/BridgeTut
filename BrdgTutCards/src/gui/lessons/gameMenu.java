@@ -4,6 +4,7 @@
  */
 package gui.lessons;
 
+import gameboard.Game;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
@@ -131,7 +132,11 @@ public class gameMenu extends javax.swing.JFrame {
 
     private void btnFreePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFreePlayActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Coming soon!");
+        //JOptionPane.showMessageDialog(null, "Coming soon!");
+        Game game = new Game();
+        Thread thread = new Thread(game);
+        
+        thread.start();
     }//GEN-LAST:event_btnFreePlayActionPerformed
 
     /**

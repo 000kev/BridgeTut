@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package players.ui;
+import cards.lib.Card;
 import players.lib.*;
 
 /**
@@ -31,7 +32,23 @@ public interface State {
     public Player getPlayer();
     
     public boolean hasPlayed();
+
+    /* Ishaan's section */
     
-    public State getNext();
+    public Card getCard();
+    
+    public int getCardVal(); //returns the a value of the card that has been selected by player
+    
+    public int getSuitVal(); //returns the a value of the suit of the  card that has been selected by player
+    
+    public void setTrump(int trumpVal); //set the trump value
+
+    public void onWestAction(java.awt.event.MouseEvent evt, cards.lib.Card card,int lessonNum); //Method used during the lessons 
+
+    public void onEastAction(java.awt.event.MouseEvent evt, cards.lib.Card card,int lessonNum);
+
+    public void onSouthAction(java.awt.event.MouseEvent evt, cards.lib.Card card,int lessonNum);
+
+    public void onNorthAction(java.awt.event.MouseEvent evt, cards.lib.Card card,int lessonNum);
     
 }

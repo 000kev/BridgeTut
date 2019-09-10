@@ -87,7 +87,7 @@ public class newUserAccountScreen extends javax.swing.JFrame {
             }
         });
         pnlNewAcc.add(btnProcess);
-        btnProcess.setBounds(220, 210, 110, 30);
+        btnProcess.setBounds(220, 210, 110, 23);
 
         lblBackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageAssets/background.jpg"))); // NOI18N
         lblBackGround.setText("jLabel1");

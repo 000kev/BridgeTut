@@ -44,6 +44,7 @@ public class LoginScreen extends javax.swing.JFrame {
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(580, 400));
         getContentPane().setLayout(null);
 
         pnlLogin.setLayout(null);

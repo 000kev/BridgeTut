@@ -5,6 +5,8 @@
  */
 package cards.lib;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author kevin
@@ -245,6 +247,60 @@ public class Card extends javax.swing.JPanel {
         else
             return getValueAsString() + " of " + getSuitAsString();
     }
+    
+    //get int val of a given string suit value
+    public int getGivenStringAsSuit(String suit){
+        String suitVal=suit.substring(1, 1);
+        JOptionPane.showMessageDialog(null, suitVal+"");
+        int suitNumber=0;
+        
+        if ( suitVal.equalsIgnoreCase("Spades")|| suit.equalsIgnoreCase("S")) {
+            
+            suitNumber=0;
+        }
+        else if(suitVal.equalsIgnoreCase("Hearts")|| suit.equalsIgnoreCase("H")){
+            
+            suitNumber=1;
+        }
+        else if(suitVal.equalsIgnoreCase("Diamonds")|| suit.equalsIgnoreCase("D")){
+            
+            suitNumber=2;
+        }
+        else if(suitVal.equalsIgnoreCase("Clubs")|| suit.equalsIgnoreCase("C")){
+            
+            suitNumber=3;
+        }
+        else if(suitVal.equalsIgnoreCase("Joker")|| suit.equalsIgnoreCase("Joker")){
+          
+            suitNumber=4;
+        }
+        
+        return suitNumber;
+   
+    }
 
+    //New method--Take integer as input,return suit as String
+    public String getGivenSuitAsString(int suitNumber){
+        String suit="";
+        
+        if (suitNumber==0) {
+            suit="Spades";
+        }
+        else if(suitNumber==1){
+            suit="Hearts";
+        }
+        else if(suitNumber==2){
+            suit="Diamonds";
+        }
+        else if(suitNumber==3){
+            suit="Clubs";
+        }
+        else if(suitNumber==4){
+            suit="Joker";
+        }
+        
+        return suit;
+  
+    }
 
 } // end class Card

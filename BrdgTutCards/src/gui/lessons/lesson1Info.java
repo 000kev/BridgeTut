@@ -59,7 +59,7 @@ public class lesson1Info extends javax.swing.JFrame {
             }
         });
         pnlLessonInfo.add(btnNext);
-        btnNext.setBounds(450, 210, 40, 30);
+        btnNext.setBounds(450, 210, 40, 23);
 
         lblHeading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageAssets/lesson1_40_quiz.png"))); // NOI18N
         pnlLessonInfo.add(lblHeading);

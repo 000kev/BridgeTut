@@ -4,6 +4,12 @@
  */
 package gui.lessons;
 
+import gameboard.lesson2;
+import gameboard.lesson3;
+import gameboard.lesson4;
+import gameboard.lesson5;
+import gameboard.lesson6;
+import gameboard.lesson7;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -21,7 +27,7 @@ public class lessonsScreen extends javax.swing.JFrame {
         pnlLessons.setPreferredSize(new Dimension(500, 500));
         setSize(new Dimension(600, 380));
         
-        JOptionPane.showMessageDialog(null, "A scroll pane has been added ");
+        
     }
 
     /**
@@ -38,9 +44,13 @@ public class lessonsScreen extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         lblHeading = new javax.swing.JLabel();
         lblLessonNum = new javax.swing.JLabel();
-        lblLessonProgress = new javax.swing.JLabel();
         btnLesson1 = new javax.swing.JButton();
         btnLesson2 = new javax.swing.JButton();
+        btnLesson3 = new javax.swing.JButton();
+        btnLesson4 = new javax.swing.JToggleButton();
+        btnLesson5 = new javax.swing.JButton();
+        btnLesson6 = new javax.swing.JButton();
+        btnLesson7 = new javax.swing.JButton();
         lblBckGround = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,11 +73,7 @@ public class lessonsScreen extends javax.swing.JFrame {
 
         lblLessonNum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageAssets/lessonNum37.png"))); // NOI18N
         pnlLessons.add(lblLessonNum);
-        lblLessonNum.setBounds(40, 70, 250, 67);
-
-        lblLessonProgress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageAssets/progress37.png"))); // NOI18N
-        pnlLessons.add(lblLessonProgress);
-        lblLessonProgress.setBounds(340, 70, 190, 72);
+        lblLessonNum.setBounds(180, 60, 250, 67);
 
         btnLesson1.setText("LESSON 1");
         btnLesson1.addActionListener(new java.awt.event.ActionListener() {
@@ -76,11 +82,61 @@ public class lessonsScreen extends javax.swing.JFrame {
             }
         });
         pnlLessons.add(btnLesson1);
-        btnLesson1.setBounds(60, 160, 200, 30);
+        btnLesson1.setBounds(30, 150, 150, 30);
 
         btnLesson2.setText("LESSON 2");
+        btnLesson2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLesson2ActionPerformed(evt);
+            }
+        });
         pnlLessons.add(btnLesson2);
-        btnLesson2.setBounds(60, 210, 200, 30);
+        btnLesson2.setBounds(230, 150, 150, 30);
+
+        btnLesson3.setText("LESSON 3");
+        btnLesson3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLesson3ActionPerformed(evt);
+            }
+        });
+        pnlLessons.add(btnLesson3);
+        btnLesson3.setBounds(420, 150, 150, 30);
+
+        btnLesson4.setText("LESSON 4");
+        btnLesson4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLesson4ActionPerformed(evt);
+            }
+        });
+        pnlLessons.add(btnLesson4);
+        btnLesson4.setBounds(30, 200, 150, 30);
+
+        btnLesson5.setText("LESSON 5");
+        btnLesson5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLesson5ActionPerformed(evt);
+            }
+        });
+        pnlLessons.add(btnLesson5);
+        btnLesson5.setBounds(230, 200, 150, 30);
+
+        btnLesson6.setText("LESSON 6");
+        btnLesson6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLesson6ActionPerformed(evt);
+            }
+        });
+        pnlLessons.add(btnLesson6);
+        btnLesson6.setBounds(420, 200, 150, 30);
+
+        btnLesson7.setText("LESSON 7");
+        btnLesson7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLesson7ActionPerformed(evt);
+            }
+        });
+        pnlLessons.add(btnLesson7);
+        btnLesson7.setBounds(30, 260, 150, 30);
 
         lblBckGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageAssets/background.jpg"))); // NOI18N
         lblBckGround.setText("sdasdsadasdsa");
@@ -111,6 +167,66 @@ public class lessonsScreen extends javax.swing.JFrame {
                 this.setVisible(false);
                 this.dispose(); 
     }//GEN-LAST:event_btnLesson1ActionPerformed
+
+    private void btnLesson2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLesson2ActionPerformed
+        // Takes you to lesson 2
+        lesson2 obj=new lesson2();
+        Thread thread=new Thread(obj);
+        thread.start();
+        
+        this.setVisible(false);
+                this.dispose(); 
+    }//GEN-LAST:event_btnLesson2ActionPerformed
+
+    private void btnLesson3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLesson3ActionPerformed
+        // Takes you to lesson 3
+        lesson3 obj=new lesson3();
+        Thread thread=new Thread(obj);
+        thread.start();
+        
+        this.setVisible(false);
+                this.dispose(); 
+    }//GEN-LAST:event_btnLesson3ActionPerformed
+
+    private void btnLesson4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLesson4ActionPerformed
+       // Takes you to lesson 4
+        lesson4 obj=new lesson4();
+        Thread thread=new Thread(obj);
+        thread.start();
+        
+        this.setVisible(false);
+                this.dispose(); 
+    }//GEN-LAST:event_btnLesson4ActionPerformed
+
+    private void btnLesson5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLesson5ActionPerformed
+        // Takes you to lesson 5
+        lesson5 obj=new lesson5();
+        Thread thread=new Thread(obj);
+        thread.start();
+        
+        this.setVisible(false);
+                this.dispose(); 
+    }//GEN-LAST:event_btnLesson5ActionPerformed
+
+    private void btnLesson6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLesson6ActionPerformed
+        // Takes you to lesson 6
+        lesson6 obj=new lesson6();
+        Thread thread=new Thread(obj);
+        thread.start();
+        
+        this.setVisible(false);
+                this.dispose(); 
+    }//GEN-LAST:event_btnLesson6ActionPerformed
+
+    private void btnLesson7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLesson7ActionPerformed
+        // Takes you to lesson 7
+        lesson7 obj=new lesson7();
+        Thread thread=new Thread(obj);
+        thread.start();
+        
+        this.setVisible(false);
+                this.dispose(); 
+    }//GEN-LAST:event_btnLesson7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,11 +266,15 @@ public class lessonsScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLesson1;
     private javax.swing.JButton btnLesson2;
+    private javax.swing.JButton btnLesson3;
+    private javax.swing.JToggleButton btnLesson4;
+    private javax.swing.JButton btnLesson5;
+    private javax.swing.JButton btnLesson6;
+    private javax.swing.JButton btnLesson7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBckGround;
     private javax.swing.JLabel lblHeading;
     private javax.swing.JLabel lblLessonNum;
-    private javax.swing.JLabel lblLessonProgress;
     private javax.swing.JPanel pnlLessons;
     // End of variables declaration//GEN-END:variables
 }

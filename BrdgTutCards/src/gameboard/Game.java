@@ -12,10 +12,11 @@ import players.ui.*;
  *
  * @author kevin
  */
-public class Game {
+public class Game implements Runnable {
     
     
     public static void main(String[] args) {
+        
         GameBoard game = new GameBoard();
         
         game.setVisible(true);
@@ -37,6 +38,30 @@ public class Game {
         
         game.gameOver();
         
+    }
+
+    @Override
+    public void run() {
+        GameBoard game = new GameBoard();
+        
+        game.setVisible(true);
+        JOptionPane optionPane = new JOptionPane(new JLabel("North starts the game",JLabel.CENTER));
+        JDialog dialog = optionPane.createDialog("Game Start");
+        dialog.setModal(true);
+        dialog.setVisible(true);
+        
+        for (int i=1; i<=13; i++) {
+            while (!game.roundComplete()) {
+            
+            System.out.print("");
+            game.play();
+            }
+       
+            System.out.println("cleared round "+i);
+            game.tallyRound();
+        }
+        
+        game.gameOver();
     }
     
 }

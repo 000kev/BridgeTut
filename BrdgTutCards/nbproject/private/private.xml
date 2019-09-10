@@ -3,21 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/mechanics/lib/Score.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/players/lib/North.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/players/ui/SouthTurnState.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/gameboard/GameBoard.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/gameboard/Game.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/players/ui/EastTurnState.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/players/lib/South.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/mechanics/lib/WestScore.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/mechanics/lib/EastScore.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/players/ui/WestTurnState.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/mechanics/lib/SouthScore.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/gameboard/Board1.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/cards/lib/Card.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/mechanics/lib/NorthScore.java</file>
-            <file>file:/home/kevin/NetBeansProjects/BridgeTutCards/src/players/ui/NorthTurnState.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/mechanics/lib/Score.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/players/lib/North.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/cards/lib/Deck.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/mechanics/lib/EastScore.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/mechanics/lib/Memorization.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/players/lib/East.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/players/ui/State.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/gui/lessons/Lesson.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/gui/lessons/lessonsScreen.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/players/lib/Player.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/gameboard/Board1.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/players/ui/NorthTurnState.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/players/ui/EastTurnState.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/gui/lessons/gameMenu.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/cards/lib/Hand.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/gameboard/GameBoard.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/gameboard/Game.java</file>
+            <file>file:/home/kevin/NetBeansProjects/BridgeTut/BrdgTutCards/src/cards/lib/Card.java</file>
         </group>
     </open-files>
 </project-private>
